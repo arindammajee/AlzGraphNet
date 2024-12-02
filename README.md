@@ -1,4 +1,4 @@
-# Graph-MRI-Alzheimer-Detection
+# AlzGraphNet: Alzheimer Detection from MRI scans with Graph Neural Networks
 
 This repository contains a project that leverages advanced deep learning techniques, including graph-based neural networks, for the detection of Alzheimer's disease using MRI scans. The work focuses on constructing graphs from patches of 3D medical images and analyzing them using graph convolutional networks (GCNs), graph attention networks (GATs), and graph isomorphism networks (GINs).
 
