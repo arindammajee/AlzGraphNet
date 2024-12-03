@@ -4,6 +4,9 @@ This repository contains a project that leverages advanced deep learning techniq
 
 The pipeline involves preprocessing MRI data, handling shape inconsistencies, creating graphs with K-Nearest Neighbors (KNN), and training graph-based models for classification between Alzheimer's Disease (AD) and Healthy Control (HC) groups.
 
+## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Approach
 
 ## Data Preprocessing:
@@ -16,10 +19,14 @@ The pipeline involves preprocessing MRI data, handling shape inconsistencies, cr
 MRI scans are divided into patches using a sliding window technique with specified kernel sizes and strides.
 Each patch is treated as a node in the graph, and its features are derived from its pixel/voxel data.
 Graph adjacency matrices are constructed using the KNN algorithm, ensuring each node is connected to its nearest neighbors.
-Graph Neural Networks:
 
-Three types of graph-based models are implemented:
-- Graph Convolutional Network (GCN)
+| MRI Image | Constructed Graph from the MRI Scan |
+|---|---|
+| ![Image](/images/MRI%20Scan%20Sagital%20View.png) | ![Image](images/Constructed%20Brain%20Graph.png) |
+
+## Graph Neural Networks:
+
+Initially we have only used  Graph Convolutional Network (GCN) but we will expand it with other type of networks also -
 - Graph Attention Network (GAT)
 - Graph Isomorphism Network (GIN)
 The models operate on graph representations of MRI scans, leveraging the spatial relationships between patches.
@@ -77,7 +84,4 @@ prettytable
 - Enhancing evaluation with cross-dataset validation.
 
 # Acknowledgments
-This project draws inspiration from state-of-the-art research in graph neural networks and medical imaging. Special thanks to the contributors of the MIRIAD dataset and the developers of PyTorch Geometric.
-
-# License
-The repository is licensed under the MIT License.
+1. Han, Kai, Yunhe Wang, Jianyuan Guo, Yehui Tang, and Enhua Wu. "Vision gnn: An image is worth graph of nodes." Advances in neural information processing systems 35 (2022): 8291-8303.
