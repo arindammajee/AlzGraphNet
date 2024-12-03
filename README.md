@@ -26,10 +26,26 @@ Graph adjacency matrices are constructed using the KNN algorithm, ensuring each 
 
 ## Graph Neural Networks:
 
-Initially we have only used  Graph Convolutional Network (GCN) but we will expand it with other type of networks also -
-- Graph Attention Network (GAT)
-- Graph Isomorphism Network (GIN)
-The models operate on graph representations of MRI scans, leveraging the spatial relationships between patches.
+Initially we have only used  Graph Convolutional Network (GCN). A structure of the GCN is here - 
+```
+GCN(
+  (conv3d): Conv3d(1, 16, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+  (maxpool): MaxPool3d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (conv3d_2): Conv3d(16, 32, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1))
+  (maxpool_2): MaxPool3d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (conv1): GCNConv(256, 32)
+  (conv2): GCNConv(32, 16)
+  (conv3): GCNConv(16, 8)
+  (maxpool1d): MaxPool1d(kernel_size=64, stride=64, padding=0, dilation=1, ceil_mode=False)
+  (avgpool1d): AvgPool1d(kernel_size=(64,), stride=(64,), padding=(0,))
+  (fc1): Linear(in_features=128, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=64, bias=True)
+  (fc3): Linear(in_features=128, out_features=256, bias=True)
+  (fc4): Linear(in_features=256, out_features=64, bias=True)
+  (classify): Linear(in_features=128, out_features=2, bias=True)
+)
+```
+The models operate on graph representations of MRI scans, leveraging the spatial relationships between patches. We have kept the model lightweight (only **0.122394M** parameter) without compromising with it's efficiency. 
 
 # Evaluation:
 
@@ -80,8 +96,9 @@ prettytable
 
 # Future Improvements
 - Automating configuration for kernel size and dataset path.
-- Extending support for additional datasets and graph neural network architectures.
+- Extending support for additional datasets and graph neural network architectures such as **Graph Attention Network (GAT)** and **Graph Isomorphism Network (GIN)**
 - Enhancing evaluation with cross-dataset validation.
 
 # Acknowledgments
 1. Han, Kai, Yunhe Wang, Jianyuan Guo, Yehui Tang, and Enhua Wu. "Vision gnn: An image is worth graph of nodes." Advances in neural information processing systems 35 (2022): 8291-8303.
+2. Malone, Ian B., David Cash, Gerard R. Ridgway, David G. MacManus, Sebastien Ourselin, Nick C. Fox, and Jonathan M. Schott. "MIRIAD—Public release of a multiple time point Alzheimer's MR imaging dataset." NeuroImage 70 (2013): 33-36.
